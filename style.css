@@ -1,0 +1,106 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #222222;
+}
+
+.calc-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    height: 400px;
+    width: 350px;
+    margin: 40px;
+}
+
+.black-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    height: 134px;
+    width: 350px;
+    margin: 0px;
+}
+
+.screen {
+    height: 67px;
+    width: 262px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+
+.calc-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid orange;
+    width: 350px;
+    height: 266px;
+    margin: 0px;
+}
+
+.num-btns,
+.op-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid purple;
+    height: 266px;
+}
+
+.num-btns {
+    width: 216px;
+}
+
+.op-btns {
+    width: 108px;
+}
+
+.btn-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+
+.footer {
+    background-color: #04d435;
+    font-family: sans-serif;
+    text-align: center;
+    font-family: 'Zen dots', cursive;
+    font-size: 14px;
+    margin-top: auto;
+    width: 100%;
+
+}
+
+.my-info,
+.imgAttrib {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    height: 28px;
+}
+
+.github-logo {
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 15px;
+}
