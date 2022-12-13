@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(211, 211, 211);
 }
 
 .calc-main {
@@ -44,7 +45,7 @@ body {
     justify-content: flex-end;
     height: 67px;
     width: 375px;
-    background-color: #d3d3d3;
+    background-color: rgb(178, 175, 175);
     box-shadow: inset 0 8px 10px -6px #464545, inset 8px 0 10px -6px #464545;
     border-radius: 5px;
     font-family: 'Space Mono', monospace;
@@ -121,10 +122,11 @@ body {
 }
 
 .footer {
-    background-color: #04d435;
+    height: 40px;
+    background-color: rgb(74, 87, 96);
     font-family: sans-serif;
     text-align: center;
-    font-family: 'Zen dots', cursive;
+    font-family: 'Space Mono', monospace;
     font-size: 14px;
     margin-top: auto;
     width: 100%;
@@ -136,12 +138,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2px;
+    width: 100%;
+    padding: 6px;
     height: 28px;
 }
 
 .github-logo {
     width: 30px;
-    margin-top: 10px;
+    margin-top: 4px;
     margin-left: 15px;
 }
