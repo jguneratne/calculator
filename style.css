@@ -29,7 +29,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    background-color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: inset 0 -8px 15px -6px rgb(174, 173, 173), inset -8px 0 8px -6px rgb(174, 173, 173);
     height: 134px;
     width: 350px;
     margin: 0px;
@@ -42,6 +45,7 @@ body {
     height: 67px;
     width: 262px;
     background-color: #d3d3d3;
+    box-shadow: inset 0 8px 10px -6px #464545, inset 8px 0 10px -6px #464545;
     border-radius: 5px;
     font-family: 'Space Mono', monospace;
     font-size: 36px;
