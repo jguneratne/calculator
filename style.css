@@ -78,6 +78,28 @@ body {
     padding: 10px;
 }
 
+.btn-num,
+.btn-op {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 50%;
+    border-bottom: 50%;
+    border-right: 50%;
+    background-color: lightskyblue;
+}
+
+.btn-clear {
+    height: 40px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: lightskyblue;
+}
 
 .footer {
     background-color: #04d435;
