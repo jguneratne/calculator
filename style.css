@@ -36,10 +36,16 @@ body {
 }
 
 .screen {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     height: 67px;
     width: 262px;
     background-color: #d3d3d3;
     border-radius: 5px;
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    padding-right: 4px;
 }
 
 .calc-body {
@@ -72,7 +78,7 @@ body {
 
 .btn-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     padding: 10px;
@@ -85,10 +91,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-left: 50%;
-    border-bottom: 50%;
-    border-right: 50%;
+    border-radius: 5px;
     background-color: lightskyblue;
+    font-family: 'Major Mono Display', monospace;
+    font-size: 24px;
 }
 
 .btn-clear {
