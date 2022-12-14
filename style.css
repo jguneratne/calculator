@@ -102,10 +102,10 @@ body {
     align-items: center;
     border-radius: 5px;
     background-color: rgb(135, 206, 250);
-    box-shadow: 0 8px 10px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
+    box-shadow: 0 8px 8px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
     font-family: 'Major Mono Display', monospace;
     font-size: 24px;
-    font-weight: bold;
+    cursor: pointer;
 }
 
 .btn-clear {
@@ -119,6 +119,7 @@ body {
     box-shadow: 0 8px 10px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
     font-family: 'Major Mono Display', monospace;
     font-size: 24px;
+    cursor: pointer;
 }
 
 .footer {
