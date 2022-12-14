@@ -1,6 +1,8 @@
 // Global Variables: 
-const buttons = document.querySelectorAll('.btns');
+const buttons = document.querySelectorAll('.btns'); // Need to use forEach to add event listener, because cannot add it to node list returned by querySelectorAll
 const screen = document.querySelector('.screen');
+
+
 // Functions: 
 
 function add(addNum1, addNum2) {
@@ -23,7 +25,7 @@ function divide(divNum1, divNum2) {
 // Event Listeners
 
 buttons.forEach(button => {
-    button.addEventListener('pointerdown', function(e){
+    button.addEventListener('pointerdown', function(e) {
         console.log(e);
     });
 });
