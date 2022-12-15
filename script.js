@@ -29,7 +29,9 @@ function divide(divNum1, divNum2) {
     return quot = divNum1 / divNum2;
 };
 
+
 // Other Functions
+
 function updateScreen() {
     screen.textContent = calculator.displayValue;
 }
@@ -39,14 +41,19 @@ function updateScreen() {
 
 buttons.forEach(button => {
     button.addEventListener('pointerdown', function(e) {
-        if(e.target.matches('.btn-num')) {
-            console.log("number");
+
+        const {target} = e;
+
+        if(!e.target.matches('.btns')) {
+            return;
+        } else if (e.target.matches('.btn-num')) {
+            console.log(target.dataset.value);
         } else if (e.target.matches('.btn-dec')) {
-            console.log("decimal");
+            console.log(target.dataset.value);
         } else if (e.target.matches('.btn-op')) {
-            console.log("operator")
+            console.log(target.dataset.value)
         } else if (e.target.matches('.btn-clear')) {
-            console.log("clear");
+            console.log(target.dataset.value);
         }
         
         
