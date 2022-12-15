@@ -39,13 +39,24 @@ function updateScreen() {
 
 buttons.forEach(button => {
     button.addEventListener('pointerdown', function(e) {
-        if(e.target.matches('#num9')) {
-            screen.textContent = '9';
-        } else if (e.target.matches('#num8')) {
-            screen.textContent = '8';
-        } else if (e.target.matches('#num7')) {
-            screen.textContent = '7';
+        if(e.target.matches('.btn-num')) {
+            console.log("number");
+        } else if (e.target.matches('.btn-dec')) {
+            console.log("decimal");
+        } else if (e.target.matches('.btn-op')) {
+            console.log("operator")
+        } else if (e.target.matches('.btn-clear')) {
+            console.log("clear");
         }
+        
+        
+        // if(e.target.matches('#num9')) {
+        //     screen.textContent = '9';
+        // } else if (e.target.matches('#num8')) {
+        //     screen.textContent = '8';
+        // } else if (e.target.matches('#num7')) {
+        //     screen.textContent = '7';
+        // }
     });
 });
 
