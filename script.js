@@ -56,14 +56,6 @@ buttons.forEach(button => {
             console.log(target.dataset.value);
         }
         
-        
-        // if(e.target.matches('#num9')) {
-        //     screen.textContent = '9';
-        // } else if (e.target.matches('#num8')) {
-        //     screen.textContent = '8';
-        // } else if (e.target.matches('#num7')) {
-        //     screen.textContent = '7';
-        // }
     });
 });
 
