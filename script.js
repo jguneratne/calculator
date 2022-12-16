@@ -36,7 +36,6 @@ function updateScreen() {
     screen.textContent = calculator.displayValue;
 }
 
-
 // Event Listeners
 
 buttons.forEach(button => {
@@ -59,6 +58,15 @@ buttons.forEach(button => {
     });
 });
 
+document.addEventListener('keydown', function(e) {
+    if((e.key === '1') || (e.key === '2') || (e.key === '3') || (e.key === '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0') || (e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === 'Enter')) {
+        console.log(e.key);
+    } else {
+        return;
+    }
+    
+        
+    });
 
 // Function Calls
 updateScreen();
