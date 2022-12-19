@@ -14,11 +14,7 @@ const calculator = {
     },
 
     appendDigit: function(num) {
-        if(screen.textContent === '0') {
-            this.displayValue += num;
-        } else {
-            this.displayValue += num;
-        }
+        this.displayValue = this.displayValue === '0' ? num : this.displayValue + num;
     },
 };
 
