@@ -5,9 +5,9 @@ const screen = document.querySelector('.screen');
 // Calculator Object: 
 const calculator = {
     displayValue: '0', 
-    firstOperand: null, 
-    nextOperand: false, 
-    operator: null,
+    firstOperand: '', 
+    nextOperand: '', 
+    operator: undefined,
 
     updateScreen: function() {
         screen.textContent = this.displayValue;
