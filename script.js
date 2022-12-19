@@ -14,7 +14,11 @@ const calculator = {
     },
 
     appendDigit: function(num) {
-        this.displayValue += num;
+        if(screen.textContent === '0') {
+            this.displayValue += num;
+        } else {
+            this.displayValue += num;
+        }
     },
 };
 
@@ -77,3 +81,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 
+// Method Calls
+
+calculator.updateScreen();
