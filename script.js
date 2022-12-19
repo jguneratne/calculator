@@ -16,6 +16,12 @@ const calculator = {
     appendDigit: function(num) {
         this.displayValue = this.displayValue === '0' ? num : this.displayValue + num;
     },
+
+    addDecimal: function(point) {
+        if(!this.displayValue.includes(point)) {
+            this.displayValue += point;
+        }
+    }
 };
 
 
@@ -51,7 +57,8 @@ buttons.forEach(button => {
             calculator.appendDigit(target.dataset.value);   
             calculator.updateScreen();
         } else if (e.target.matches('.btn-dec')) {
-            console.log(target.dataset.value);
+            calculator.addDecimal(target.dataset.value);
+            calculator.updateScreen();
         } else if (e.target.matches('.btn-op')) {
             console.log(target.dataset.value)
         } else if (e.target.matches('.btn-clear')) {
@@ -64,6 +71,9 @@ buttons.forEach(button => {
 document.addEventListener('keydown', function(e) {
         if((e.key === '1') || (e.key ===  '2') || (e.key ===  '3') || (e.key ===  '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0')) {
             calculator.appendDigit(e.key);   
+            calculator.updateScreen();
+        } else if (e.key === '.') {
+            calculator.addDecimal(e.key);
             calculator.updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
             console.log(e.key);
