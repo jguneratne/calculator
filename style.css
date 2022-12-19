@@ -109,6 +109,7 @@ body {
     cursor: pointer;
 }
 
+.btn-undo,
 .btn-clear {
     height: 40px;
     width: 90px;
@@ -121,6 +122,11 @@ body {
     font-family: 'Major Mono Display', monospace;
     font-size: 24px;
     cursor: pointer;
+}
+
+.btn-undo {
+    margin-top: 6px;
+    font-size: 36px;
 }
 
 .footer {
