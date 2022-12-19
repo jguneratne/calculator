@@ -36,6 +36,7 @@ function updateScreen() {
     screen.textContent = calculator.displayValue;
 }
 
+
 // Event Listeners
 
 buttons.forEach(button => {
@@ -46,7 +47,8 @@ buttons.forEach(button => {
         if(!e.target.matches('.btns')) {
             return;
         } else if (e.target.matches('.btn-num')) {
-            console.log(target.dataset.value);
+            appendDigit(target.dataset.value);   
+            updateScreen();
         } else if (e.target.matches('.btn-dec')) {
             console.log(target.dataset.value);
         } else if (e.target.matches('.btn-op')) {
@@ -59,7 +61,13 @@ buttons.forEach(button => {
 });
 
 document.addEventListener('keydown', function(e) {
-        if((e.key === '1') || (e.key ===  '2') || (e.key ===  '3') || (e.key ===  '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0') || (e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === 'Enter') || (e.key === 'Backspace')) {
+        if((e.key === '1') || (e.key ===  '2') || (e.key ===  '3') || (e.key ===  '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0')) {
+            console.log(e.key);
+        } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
+            console.log(e.key);
+        } else if ((e.key === 'Enter')) {
+            console.log(e.key);
+        } else if ((e.key === 'Backspace')) {
             console.log(e.key);
         } else {
             return;
