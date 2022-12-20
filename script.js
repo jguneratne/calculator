@@ -16,7 +16,12 @@ const calculator = {
     },
 
     appendDigit: function(num) {
-        this.displayValue = this.displayValue === '0' ? num : this.displayValue + num;
+        if(this.displayValue === '0') {
+            this.displayValue = num;
+        } else {
+            this.displayValue = this.displayValue + num;
+        };
+        
         return this;
     },
 
