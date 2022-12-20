@@ -11,7 +11,7 @@ const calculator = {
     operator: undefined,
 
     updateScreen: function() {
-        screen.textContent = this.displayValue;
+        toString(screen.textContent = this.displayValue);
         return this;
     },
 
@@ -28,7 +28,29 @@ const calculator = {
     },
 
     operation: function(op) {
+        
+        if(this.firstOperand === NaN || this.nextOperand === NaN || this.operator === 'undefined') {
+            return
+        }
+        
+        parseFloat(this.firstOperand = this.displayValue);
+            console.log(this.firstOperand);
 
+        let add = function() {
+            return this.firstOperand + this.nextOperand;
+        };
+
+        let sub = function() {
+            return this.firstOperand - this.nextOperand;
+        }; 
+
+        let mult = function() {
+            return this.firstOperand * this.nextOperand;
+        };
+
+        let div = function() {
+            return this.firstOperand / this.nextOperand;
+        };
     },
 
     resetScreen: function() {
@@ -38,25 +60,6 @@ const calculator = {
         this.operator = undefined;
         return this;
     },
-};
-
-
-// Simple Operator Functions: 
-
-function add(addNum1, addNum2) {
-    return sum = addNum1 + addNum2;
-}
-
-function subtract(subNum1, subNum2) {
-    return diff = subNum1 - subNum2;
-};
-
-function multiply(multNum1, multNum2) {
-    return prod = multNum1 * multNum2;
-};
-
-function divide(divNum1, divNum2) {
-    return quot = divNum1 / divNum2;
 };
 
 
