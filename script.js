@@ -29,7 +29,15 @@ const calculator = {
 
     operation: function(op) {
 
-    }
+    },
+
+    resetScreen: function() {
+        this.displayValue = '0';
+        this.firstOperand = '';
+        this.nextOperand = '';
+        this.operator = undefined;
+        return this;
+    },
 };
 
 
@@ -68,7 +76,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-op')) {
             console.log(target.dataset.value)
         } else if (e.target.matches('.btn-clear')) {
-            console.log(target.dataset.value);
+            calculator.resetScreen().updateScreen();
         }
         
     });
@@ -85,6 +93,8 @@ document.addEventListener('keydown', function(e) {
             console.log(e.key);
         } else if ((e.key === 'Backspace')) {
             console.log(e.key);
+        } else if ((e.key === 'd')) {
+            calculator.resetScreen().updateScreen();
         } else {
             return;
         }
