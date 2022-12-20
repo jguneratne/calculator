@@ -41,21 +41,16 @@ const calculator = {
         parseFloat(this.firstOperand = this.displayValue);
             console.log(this.firstOperand);
 
-        let add = function() {
+        if (op === '+') {
             return this.firstOperand + this.nextOperand;
-        };
-
-        let sub = function() {
+        } else if (op === '-') {
             return this.firstOperand - this.nextOperand;
-        }; 
-
-        let mult = function() {
+        } else if (op === '*') {
             return this.firstOperand * this.nextOperand;
-        };
-
-        let div = function() {
+        } else if (op === '/') {
             return this.firstOperand / this.nextOperand;
-        };
+        }
+    
     },
 
     resetScreen: function() {
