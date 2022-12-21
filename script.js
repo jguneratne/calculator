@@ -7,7 +7,7 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0', 
     firstOperand: '', 
-    nextOperand: '', 
+    nextOperand: false, 
     operator: undefined,
 
     updateScreen: function() {
@@ -32,14 +32,20 @@ const calculator = {
         return this;
     },
 
+    undo: function() {
+        this.displayValue = this.displayValue.toString().slice(0, -1);
+        return this;
+    },
+
+
     operation: function(op) {
         
-        if(this.firstOperand === NaN || this.nextOperand === NaN || this.operator === 'undefined') {
+        if(this.firstOperand === null || this.firstOperand === NaN || this.nextOperand === null || this.nextOperand === NaN || this.operator === 'undefined') {
             return
         }
-        
-        parseFloat(this.firstOperand = this.displayValue);
-            console.log(this.firstOperand);
+    
+
+    
 
         if (op === '+') {
             return this.firstOperand + this.nextOperand;
@@ -80,6 +86,8 @@ buttons.forEach(button => {
             console.log(target.dataset.value)
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
+        } else if (e.target.matches('.btn-undo')) {
+            calculator.undo().updateScreen();
         }
         
     });
@@ -95,7 +103,7 @@ document.addEventListener('keydown', function(e) {
         } else if ((e.key === 'Enter')) {
             console.log(e.key);
         } else if ((e.key === 'Backspace')) {
-            console.log(e.key);
+            calculator.undo().updateScreen();
         } else if ((e.key === 'd')) {
             calculator.resetScreen().updateScreen();
         } else {
@@ -106,4 +114,4 @@ document.addEventListener('keydown', function(e) {
 
 // Method Calls
 
-calculator.updateScreen();
+calculator.updateScreen(); 
