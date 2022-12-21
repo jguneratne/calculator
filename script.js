@@ -11,10 +11,13 @@ const calculator = {
     result: '',
     operator: undefined,
 
+
     updateScreen: function() {
         toString(screen.textContent = this.displayValue);
+
         return this;
     },
+
 
     appendDigit: function(num) {
         if(this.displayValue === '0') {
@@ -26,6 +29,7 @@ const calculator = {
         return this;
     },
 
+
     addDecimal: function(point) {
         if(!this.displayValue.includes(point)) {
             this.displayValue.toString() += point;
@@ -33,8 +37,14 @@ const calculator = {
         return this;
     },
 
+
     undo: function() {
-        this.displayValue = this.displayValue.toString().slice(0, -1);
+        if(this.displayValue === '0') {
+            return;
+        } else {
+            this.displayValue = this.displayValue.toString().slice(0, -1);
+        }
+        
         return this;
     },
 
@@ -63,6 +73,7 @@ const calculator = {
         return this; 
     },
 
+    
     calculation: function(nextOp) {
         if(nextOp === '=') {
             this.displayValue = toString(this.result);
@@ -71,6 +82,7 @@ const calculator = {
         }
         return this;
     },
+
 
     resetScreen: function() {
         this.displayValue = '0';
