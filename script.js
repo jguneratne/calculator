@@ -8,6 +8,7 @@ const calculator = {
     displayValue: '0', 
     firstOperand: '', 
     nextOperand: false, 
+    result: '',
     operator: undefined,
 
     updateScreen: function() {
@@ -27,7 +28,7 @@ const calculator = {
 
     addDecimal: function(point) {
         if(!this.displayValue.includes(point)) {
-            this.displayValue += point;
+            this.displayValue.toString() += point;
         }
         return this;
     },
@@ -39,13 +40,15 @@ const calculator = {
 
 
     operation: function(op) {
+
+        this.firstOperand = parseFloat(this.displayValue);
+            console.log(this.firstOperand)
+        this.nextOperand = true;
+            console.log(this.nextOperand);
         
-        if(this.firstOperand === null || this.firstOperand === NaN || this.nextOperand === null || this.nextOperand === NaN || this.operator === 'undefined') {
+        if(this.firstOperand === '0' || this.firstOperand === NaN || this.nextOperand === false || this.nextOperand === NaN || this.operator === 'undefined') {
             return
         }
-    
-
-    
 
         if (op === '+') {
             return this.firstOperand + this.nextOperand;
@@ -57,6 +60,16 @@ const calculator = {
             return this.firstOperand / this.nextOperand;
         }
     
+        return this; 
+    },
+
+    calculation: function(nextOp) {
+        if(nextOp === '=') {
+            this.displayValue = toString(this.result);
+        } else if (nextOp === '+' || nextOp === '-' || nextOp === '*' || nextOp === '/') {
+            (this.firstOperand = this.result) && (this.displayValue = toString(this.result));
+        }
+        return this;
     },
 
     resetScreen: function() {
@@ -83,7 +96,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            console.log(target.dataset.value)
+            calculator.operation().calculation().updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -98,8 +111,8 @@ document.addEventListener('keydown', function(e) {
             calculator.appendDigit(e.key).updateScreen();   
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
-        } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            console.log(e.key);
+        } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === '=')) {
+            calculator.operation().calculation().updateScreen();
         } else if ((e.key === 'Enter')) {
             console.log(e.key);
         } else if ((e.key === 'Backspace')) {
