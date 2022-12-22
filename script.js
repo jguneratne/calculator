@@ -109,6 +109,8 @@ buttons.forEach(button => {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
             calculator.operation().calculation().updateScreen();
+        } else if (e.target.matches('.btn-eql')) {
+            calculator.operation().calculation().updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -123,7 +125,9 @@ document.addEventListener('keydown', function(e) {
             calculator.appendDigit(e.key).updateScreen();   
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
-        } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === '=')) {
+        } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
+            calculator.operation().calculation().updateScreen();
+        } else if (e.key === '=') {
             calculator.operation().calculation().updateScreen();
         } else if ((e.key === 'Enter')) {
             console.log(e.key);
