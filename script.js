@@ -9,7 +9,7 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0', 
     firstOperand: '', 
-    nextOperand: false, 
+    nextOperand: '', 
     result: '',
     operator: undefined,
 
@@ -52,14 +52,18 @@ const calculator = {
 
 
     operation: function(op) {
-
-        this.firstOperand = parseFloat(this.displayValue);
-            console.log(this.firstOperand)
-        this.nextOperand = true;
-            console.log(this.nextOperand);
-        
-        if(this.firstOperand === '0' || this.firstOperand === NaN || this.nextOperand === false || this.nextOperand === NaN || this.operator === 'undefined') {
+        if(this.firstOperand === '' || this.firstOperand === NaN || this.nextOperand === '' || this.nextOperand === NaN || this.operator === undefined) {
             return
+        }
+
+        this.operation = op;
+
+        if(this.operation = undefined) {
+            this.firstOperand = parseFloat(this.displayValue);
+                console.log(this.firstOperand)
+        } else if(this.firstOperand !== '' && this.operator !== undefined) {
+            this.nextOperand = parseFloat(this.displayValue);
+                console.log(this.nextOperand);
         }
 
         if (op === '+') {
@@ -80,7 +84,7 @@ const calculator = {
         if(nextOp === '=') {
             this.displayValue = toString(this.result);
         } else if (nextOp === '+' || nextOp === '-' || nextOp === '*' || nextOp === '/') {
-            (this.firstOperand = this.result) && (this.displayValue = toString(this.result));
+            (this.firstOperand = this.result) && (this.nextOperand = '');
         }
         return this;
     },
@@ -110,7 +114,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation().calculation().updateScreen();
+            calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -121,12 +125,12 @@ buttons.forEach(button => {
 });
 
 document.addEventListener('keydown', function(e) {
-        if((e.key === '1') || (e.key ===  '2') || (e.key ===  '3') || (e.key ===  '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0')) {
+        if((e.key === '1') || (e.key === '2') || (e.key === '3') || (e.key === '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0')) {
             calculator.appendDigit(e.key).updateScreen();   
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === '=')) {
-            calculator.operation().calculation().updateScreen();
+            calculator.operation(e.key).calculation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
             console.log(e.key);
         } else if ((e.key === 'Backspace')) {
