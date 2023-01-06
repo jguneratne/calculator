@@ -9,6 +9,7 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0',
     firstOperand: '',
+    inputValue: parseFloat(this.displayValue),
     nextOperand: '',
     result: '',
     operator: undefined,
@@ -23,17 +24,12 @@ const calculator = {
 
     appendDigit: function(num) {
         
-        if(this.operator !== undefined) {
-            this.displayValue = this.nextOperand
-            console.log(this.nextOperand);
-        } else {
             //Logic to append numbers as they're typed
             if(this.displayValue === '0') {
                 this.displayValue = num;
             } else {
                 this.displayValue = this.displayValue + num;
             };
-        }
         
         return this;
     },
@@ -62,8 +58,8 @@ const calculator = {
 
         this.operator = op;
 
-        if(this.operator = undefined) {
-            this.firstOperand += this.displayValue;
+        if(this.operator) {
+            this.firstOperand = this.inputValue;
 
         } else {
             this.nextOperand += this.displayValue;
