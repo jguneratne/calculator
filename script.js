@@ -78,15 +78,24 @@ const calculator = {
 
             switch (this.operator) {
                 case "+":
-                    console.log(parseInt(this.firstOperand) + parseInt(this.nextOperand));
+                    console.log(parseInt(this.firstOperand) + parseInt(this.nextOperand));  
+
+                    this.result = parseInt(this.firstOperand) + parseInt(this.nextOperand);
+                    this.displayValue = toString(this.result);
                     break;
 
                 case "-":
                     console.log(parseInt(this.firstOperand) - parseInt(this.nextOperand));
+                
+                    this.result = parseInt(this.firstOperand) - parseInt(this.nextOperand);
+                    this.displayValue = toString(this.result);
                     break;
 
                 case "*":
                     console.log(parseInt(this.firstOperand) * parseInt(this.nextOperand));
+                
+                    this.result = parseInt(this.firstOperand) * parseInt(this.nextOperand);
+                    this.displayValue = toString(this.result)
                     break;
 
                 case "/":
@@ -94,6 +103,9 @@ const calculator = {
                         this.displayValue = "ERR";
                     } else {
                         console.log(parseInt(this.firstOperand) / parseInt(this.nextOperand));
+                        
+                        this.result = parseInt(this.firstOperand) / parseInt(this.nextOperand);
+                        this.displayValue = toString(this.result);
                     }
                 break;
             }
