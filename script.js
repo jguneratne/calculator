@@ -9,7 +9,6 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0',
     firstOperand: '',
-    inputValue: parseFloat(this.displayValue),
     nextOperand: '',
     result: '',
     operator: undefined,
@@ -58,14 +57,9 @@ const calculator = {
 
         this.operator = op;
 
-        if(this.operator) {
-            this.firstOperand = this.inputValue;
-
-        } else {
-            this.nextOperand += this.displayValue;
-
+        if(this.operator !== undefined) {
+            this.firstOperand = parseFloat(this.displayValue);
         }
-
 
         return this;
     },
