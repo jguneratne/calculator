@@ -1,3 +1,4 @@
+const timespan = require("jsonwebtoken/lib/timespan");
 
 
 // Global Variables:
@@ -77,19 +78,23 @@ const calculator = {
 
             switch (this.operator) {
                 case "+":
-                console.log(parseInt(this.firstOperand) + parseInt(this.nextOperand));
-                break;
+                    console.log(parseInt(this.firstOperand) + parseInt(this.nextOperand));
+                    break;
 
                 case "-":
-                console.log(parseInt(this.firstOperand) - parseInt(this.nextOperand));
-                break;
+                    console.log(parseInt(this.firstOperand) - parseInt(this.nextOperand));
+                    break;
 
                 case "*":
-                console.log(parseInt(this.firstOperand) * parseInt(this.nextOperand));
-                break;
+                    console.log(parseInt(this.firstOperand) * parseInt(this.nextOperand));
+                    break;
 
                 case "/":
-                console.log(parseInt(this.firstOperand) / parseInt(this.nextOperand));
+                    if(this.nextOperand === '0') {
+                        this.displayValue = "ERR";
+                    } else {
+                        console.log(parseInt(this.firstOperand) / parseInt(this.nextOperand));
+                    }
                 break;
             }
         }
