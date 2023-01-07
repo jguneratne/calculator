@@ -1,4 +1,4 @@
-const timespan = require("jsonwebtoken/lib/timespan");
+//const timespan = require("jsonwebtoken/lib/timespan");
 
 
 // Global Variables:
@@ -110,8 +110,7 @@ const calculator = {
                 break;
             }
         }
-
-
+        
         return this;
     },
 
