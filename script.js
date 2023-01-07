@@ -81,7 +81,7 @@ const calculator = {
                 console.log(this.operatorCheck);
                 console.log(this.operator);
 
-        } else if (nextOp === '=') {
+        } else {
                 console.log(this.nextOperand);
                 console.log(this.operator);
 
@@ -122,6 +122,12 @@ const calculator = {
         return this;
     },
 
+    equals: function(eql) {
+        this.calculation();
+
+        return this; 
+    },
+
 
     resetScreen: function() {
         this.displayValue = '0';
@@ -150,7 +156,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-op')) {
             calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
-            // CODE HERE
+            calculator.equals(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -168,7 +174,7 @@ document.addEventListener('keydown', function(e) {
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
             calculator.operation(e.key).calculation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
-            // CODE HERE
+            calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
         } else if ((e.key === 'd')) {
