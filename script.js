@@ -10,12 +10,13 @@ const calculator = {
     firstOperand: '',
     input: '',
     nextOperand: false,
+    inputTwo: '',
     result: '',
     operator: undefined,
 
 
     updateScreen: function() {
-        toString(screen.textContent = this.displayValue);
+        screen.textContent = this.displayValue.toString();
 
         return this;
     },
@@ -34,6 +35,7 @@ const calculator = {
             if(this.firstOperand !== '' && this.nextOperand === true) {
                 this.displayValue = num;
                 this.nextOperand = false;
+                this.inputTwo = parseFloat(this.displayValue);
             }
         
         return this;
@@ -67,7 +69,7 @@ const calculator = {
             this.input = parseFloat(this.displayValue);
             this.firstOperand = this.input;
             this.nextOperand = true;
-        }
+        } 
 
         return this;
     },
@@ -82,38 +84,30 @@ const calculator = {
             console.log(this.operator);
 
         } else {
-            console.log(this.nextOperand);
+            console.log(this.iputTwo);
 
             switch (this.operator) {
                 case "+":
-                    console.log(parseFloat(this.firstOperand) + parseFloat(this.nextOperand));  
-
-                    this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
-                    this.displayValue = toString(this.result);
+                    this.result = parseFloat(this.firstOperand) + parseFloat(this.inputTwo);
+                    this.displayValue = this.result.toString();
                     break;
 
                 case "-":
-                    console.log(parseFloat(this.firstOperand) - parseFloat(this.nextOperand));
-                
-                    this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
-                    this.displayValue = toString(this.result);
+                    this.result = parseFloat(this.firstOperand) - parseFloat(this.inputTwo);
+                    this.displayValue = this.result.toString();
                     break;
 
                 case "*":
-                    console.log(parseFloat(this.firstOperand) * parseFloat(this.nextOperand));
-                
-                    this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
-                    this.displayValue = toString(this.result)
+                    this.result = parseFloat(this.firstOperand) * parseFloat(this.inputTwo);
+                    this.displayValue = this.result.toString();
                     break;
 
                 case "/":
-                    if(this.nextOperand === '0') {
+                    if(this.inputTwo === '0') {
                         this.displayValue = "ERR";
                     } else {
-                        console.log(parseFloat(this.firstOperand) / parseFloat(this.nextOperand));
-                        
-                        this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
-                        this.displayValue = toString(this.result);
+                        this.result = parseFloat(this.firstOperand) / parseFloat(this.inputTwo);
+                        this.displayValue = this.result.toString();
                     }
                 break;
             }
@@ -165,7 +159,7 @@ document.addEventListener('keydown', function(e) {
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/') || (e.key === '=')) {
             calculator.operation(e.key).calculation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
-            // calculator.operation(e.target.matches('btn-op'.calculation(e.target.matches('btn-op'));
+            // CODE HERE
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
         } else if ((e.key === 'd')) {
