@@ -67,7 +67,12 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = parseFloat(this.displayValue);
             this.operatorCheck = true;
-        } 
+        } else if ((this.firstOperand !== '' && this.operator !== undefined && this.nextOperand !== '') && 
+                    (this.operator === '+' || this.operator === '- ' || this.operator === '*') || this.operator === '/') {
+            this.firstOperand = parseFloat(this.displayValue);
+        } else if (this.result !== '') {
+            this.firstOperand = parseFloat(this.result);
+        }
 
         return this;
     },
