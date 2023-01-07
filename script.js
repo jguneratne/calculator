@@ -79,17 +79,19 @@ const calculator = {
         if(nextOp !== '=') {
             this.operator = nextOp
 
-            console.log(this.input);
-            console.log(this.firstOperand);
-            console.log(this.operator);
+                console.log(this.input);
+                console.log(this.firstOperand);
+                console.log(this.operator);
 
-        } else {
+        } else if (nextOp === '=') {
             console.log(this.nextOperand);
 
             switch (this.operator) {
                 case "+":
                     this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
                     this.displayValue = this.result.toString();
+
+                    console.log(this.result);
                     break;
 
                 case "-":
