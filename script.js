@@ -1,5 +1,3 @@
-//const timespan = require("jsonwebtoken/lib/timespan");
-
 
 // Global Variables:
 const buttons = document.querySelectorAll('.btns'); // Need to use forEach to add event listener, because cannot add it to node list returned by querySelectorAll
@@ -10,7 +8,8 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0',
     firstOperand: '',
-    nextOperand: '',
+    input: '',
+    nextOperand: false,
     result: '',
     operator: undefined,
 
@@ -30,6 +29,12 @@ const calculator = {
             } else {
                 this.displayValue = this.displayValue + num;
             };
+
+            // Logic to handle nextOperand
+            if(this.firstOperand !== '' && this.nextOperand === true) {
+                this.displayValue = num;
+                this.nextOperand = false;
+            }
         
         return this;
     },
@@ -59,7 +64,9 @@ const calculator = {
         this.operator = op;
 
         if(this.operator !== undefined) {
-            this.firstOperand = parseFloat(this.displayValue);
+            this.input = parseFloat(this.displayValue);
+            this.firstOperand = this.input;
+            this.nextOperand = true;
         }
 
         return this;
@@ -70,6 +77,7 @@ const calculator = {
         if(nextOp !== '=') {
             this.operator = nextOp
 
+            console.log(this.input);
             console.log(this.firstOperand);
             console.log(this.operator);
 
