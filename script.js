@@ -120,7 +120,9 @@ const calculator = {
     resetScreen: function() {
         this.displayValue = '0';
         this.firstOperand = '';
+        this.input = '';
         this.nextOperand = '';
+        this.inputTwo = '';
         this.operator = undefined;
         return this;
     },
