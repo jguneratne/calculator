@@ -8,8 +8,7 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0',
     firstOperand: '',
-    input: '',
-    operandCheck: false,
+    operatorCheck: false,
     nextOperand: '',
     result: '',
     operator: undefined,
@@ -32,9 +31,9 @@ const calculator = {
             };
 
             // Logic to handle nextOperand
-            if(this.firstOperand !== '' && this.operandCheck === true) {
+            if(this.firstOperand !== '' && this.operatorCheck === true) {
                 this.displayValue = num;
-                this.operandCheck = false;
+                this.operatorCheck = false;
                 this.nextOperand = parseFloat(this.displayValue);
             }
         
@@ -66,9 +65,8 @@ const calculator = {
         this.operator = op;
 
         if(this.operator !== undefined) {
-            this.input = parseFloat(this.displayValue);
-            this.firstOperand = this.input;
-            this.operandCheck = true;
+            this.firstOperand = parseFloat(this.displayValue);
+            this.operatorCheck = true;
         } 
 
         return this;
@@ -76,43 +74,49 @@ const calculator = {
 
 
     calculation: function(nextOp) {
-        if(nextOp !== '=') {
+        if(nextOp == '+' || nextOp == '-' || nextOp == '*' || nextOp == '/' ) {
             this.operator = nextOp
 
-                console.log(this.input);
                 console.log(this.firstOperand);
+                console.log(this.operatorCheck);
                 console.log(this.operator);
 
         } else if (nextOp === '=') {
-            console.log(this.nextOperand);
+                console.log(this.nextOperand);
+                console.log(this.operator);
 
-            switch (this.operator) {
-                case "+":
-                    this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
-                    this.displayValue = this.result.toString();
-
-                    console.log(this.result);
-                    break;
-
-                case "-":
-                    this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
-                    this.displayValue = this.result.toString();
-                    break;
-
-                case "*":
-                    this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
-                    this.displayValue = this.result.toString();
-                    break;
-
-                case "/":
-                    if(this.nextOperand === '0') {
-                        this.displayValue = "ERR";
-                    } else {
-                        this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
+                switch (this.operator) {
+                    case "+":
+                        this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
                         this.displayValue = this.result.toString();
+        
+                            console.log(this.result);
+                        break;
+        
+                    case "-":
+                        this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
+                        this.displayValue = this.result.toString();
+                            console.log(this.result);
+                        break;
+        
+                    case "*":
+                        this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
+                        this.displayValue = this.result.toString();
+                            console.log(this.result);
+                        break;
+        
+                    case "/":
+                        if(this.nextOperand === '0') {
+                            this.displayValue = "ERR";
+                        } else {
+                            this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
+                            this.displayValue = this.result.toString();
+                        }
+        
+                            console.log(this.result);
+                        break;
                     }
-                break;
-            }
+
         }
         
         return this;
@@ -122,8 +126,7 @@ const calculator = {
     resetScreen: function() {
         this.displayValue = '0';
         this.firstOperand = '';
-        this.input = '';
-        this.operandCheck = false;
+        this.operatorCheck = false;
         this.nextOperand = '';
         this.operator = undefined;
         return this;
