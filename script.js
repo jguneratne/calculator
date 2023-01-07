@@ -78,23 +78,23 @@ const calculator = {
 
             switch (this.operator) {
                 case "+":
-                    console.log(parseInt(this.firstOperand) + parseInt(this.nextOperand));  
+                    console.log(parseFloat(this.firstOperand) + parseFloat(this.nextOperand));  
 
-                    this.result = parseInt(this.firstOperand) + parseInt(this.nextOperand);
+                    this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
                     this.displayValue = toString(this.result);
                     break;
 
                 case "-":
-                    console.log(parseInt(this.firstOperand) - parseInt(this.nextOperand));
+                    console.log(parseFloat(this.firstOperand) - parseFloat(this.nextOperand));
                 
-                    this.result = parseInt(this.firstOperand) - parseInt(this.nextOperand);
+                    this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
                     this.displayValue = toString(this.result);
                     break;
 
                 case "*":
-                    console.log(parseInt(this.firstOperand) * parseInt(this.nextOperand));
+                    console.log(parseFloat(this.firstOperand) * parseFloat(this.nextOperand));
                 
-                    this.result = parseInt(this.firstOperand) * parseInt(this.nextOperand);
+                    this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
                     this.displayValue = toString(this.result)
                     break;
 
@@ -102,9 +102,9 @@ const calculator = {
                     if(this.nextOperand === '0') {
                         this.displayValue = "ERR";
                     } else {
-                        console.log(parseInt(this.firstOperand) / parseInt(this.nextOperand));
+                        console.log(parseFloat(this.firstOperand) / parseFloat(this.nextOperand));
                         
-                        this.result = parseInt(this.firstOperand) / parseInt(this.nextOperand);
+                        this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
                         this.displayValue = toString(this.result);
                     }
                 break;
