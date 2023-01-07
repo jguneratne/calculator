@@ -95,7 +95,8 @@ body {
 
 .btn-num,
 .btn-dec,
-.btn-op {
+.btn-op,
+.btn-eql {
     height: 45px;
     width: 45px;
     display: flex;
