@@ -11,8 +11,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    operatorTwo: undefined,
-
+    showResult: '',
 
     updateScreen: function() {
         screen.textContent = this.displayValue.toString();
@@ -89,21 +88,27 @@ const calculator = {
                     case "+":
                         this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
                         this.firstOperand = parseFloat(this.result);
+                            console.log(this.firstOperand);
                         this.nextOperand = '';
+                            console.log(this.nextOperand);
                         this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "-":
                         this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
                         this.firstOperand = parseFloat(this.result);
+                            console.log(this.firstOperand);
                         this.nextOperand = '';
+                            console.log(this.nextOperand);
                         this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "*":
                         this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
                         this.firstOperand = parseFloat(this.result);
+                            console.log(this.firstOperand);
                         this.nextOperand = '';
+                            console.log(this.nextOperand);
                         this.displayValue = this.firstOperand.toString();
                         break;
         
@@ -113,7 +118,9 @@ const calculator = {
                         } else {
                             this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
                             this.firstOperand = parseFloat(this.result);
+                                console.log(this.firstOperand);
                             this.nextOperand = '';
+                                console.log(this.nextOperand);
                             this.displayValue = this.firstOperand.toString();
                         }
 
@@ -125,8 +132,16 @@ const calculator = {
         return this;
     },
 
-    equals: function(eql) {
-        this.calculation();
+
+    handleResult: function(eql) {
+        (this.showResult = eql) || (this.showResult = this.operator)
+            console.log(this.operator);
+
+        if(this.showResult = eql) {
+            this.calculation();
+        } else if (this.showResult = this.operator) {
+            this.calculation(this.firstOperand, this.nextOperand, this.operator);
+        }
 
         return this; 
     },
@@ -157,9 +172,9 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).calculation(target.dataset.value).handleResult(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
-            calculator.equals(target.dataset.value).updateScreen();
+            calculator.handleResult(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -175,9 +190,9 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).calculation(e.key).updateScreen();
+            calculator.operation(e.key).calculation(e.key).handleResult(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
-            calculator.equals(e.key).updateScreen();
+            calculator.handleResult(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
         } else if ((e.key === 'd')) {
