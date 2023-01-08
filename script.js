@@ -132,24 +132,6 @@ const calculator = {
     },
 
 
-    secondCalculation: function(op) {
-        this.operatorTwo = op; 
-                console.log(operatorTwo);
-
-        if ((this.result !== '') && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
-                this.firstOperand = parseFloat(this.calculation(this.result));
-                    console.log(this.firstOperand);
-                this.displayValue = this.firstOperand.toString();
-                this.operatorCheck = true;
-                    console.log(this.operatorCheck);
-                this.nextOperand = parseFloat(this.displayValue);
-                    console.log(this.nextOperand);
-            } 
-
-            return this;
-    },
-
-
     resetScreen: function() {
         this.displayValue = '0';
         this.firstOperand = '';
@@ -175,7 +157,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).calculation(target.dataset.value).secondCalculation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
             calculator.equals(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
@@ -193,7 +175,7 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).calculation(e.key).secondCalculation(e.key).updateScreen();
+            calculator.operation(e.key).calculation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
             calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
