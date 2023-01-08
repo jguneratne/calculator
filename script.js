@@ -77,32 +77,34 @@ const calculator = {
         if(nextOp == '+' || nextOp == '-' || nextOp == '*' || nextOp == '/' ) {
             this.operator = nextOp
 
-                console.log(this.firstOperand);
-                console.log(this.operatorCheck);
-                console.log(this.operator);
+                // console.log(this.firstOperand);
+                // console.log(this.operatorCheck);
+                // console.log(this.operator);
 
         } else {
-                console.log(this.nextOperand);
-                console.log(this.operator);
+                // console.log(this.nextOperand);
+                // console.log(this.operator);
 
                 switch (this.operator) {
                     case "+":
                         this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
-                        this.displayValue = this.result.toString();
-        
-                            console.log(this.result);
+                        this.firstOperand = parseFloat(this.result);
+                        this.nextOperand = '';
+                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "-":
                         this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
-                        this.displayValue = this.result.toString();
-                            console.log(this.result);
+                        this.firstOperand = parseFloat(this.result);
+                        this.nextOperand = '';
+                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "*":
                         this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
-                        this.displayValue = this.result.toString();
-                            console.log(this.result);
+                        this.firstOperand = parseFloat(this.result);
+                        this.nextOperand = '';
+                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "/":
@@ -110,10 +112,11 @@ const calculator = {
                             this.displayValue = "ERR";
                         } else {
                             this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
-                            this.displayValue = this.result.toString();
+                            this.firstOperand = parseFloat(this.result);
+                            this.nextOperand = '';
+                            this.displayValue = this.firstOperand.toString();
                         }
-        
-                            console.log(this.result);
+
                         break;
                     }
 
@@ -131,14 +134,16 @@ const calculator = {
 
     secondCalculation: function(op) {
         this.operatorTwo = op; 
-        
-        if ((this.firstOperand !== '' && this.nextOperand !== '' && this.operator !== undefined) 
-             && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
-                this.calculation();
+                console.log(operatorTwo);
+
+        if ((this.result !== '') && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
+                this.firstOperand = parseFloat(this.calculation(this.result));
+                    console.log(this.firstOperand);
+                this.displayValue = this.firstOperand.toString();
                 this.operatorCheck = true;
-                this.displayValue = this.result.toString();
-                this.firstOperand = parseFloat(this.result);
+                    console.log(this.operatorCheck);
                 this.nextOperand = parseFloat(this.displayValue);
+                    console.log(this.nextOperand);
             } 
 
             return this;
