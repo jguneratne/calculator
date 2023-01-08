@@ -67,12 +67,13 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = parseFloat(this.displayValue);
             this.operatorCheck = true;
-        } else if ((this.firstOperand !== '' && this.operator !== undefined && this.nextOperand !== '') && 
-                    (this.operator === '+' || this.operator === '- ' || this.operator === '*') || this.operator === '/') {
-            this.firstOperand = parseFloat(this.displayValue);
-        } else if (this.result !== '') {
+        } else if ((this.firstOperand !== '' && this.nextOperand !== '') 
+                    && (this.operator === '+' || this.operator === '- ' || this.operator === '*' || this.operator === '/')) {
+            this.operatorCheck = true;
+            this.calculation().equals().updateScreen();
             this.firstOperand = parseFloat(this.result);
-        }
+            this.nextOperand = parseFload(this.displayValue);
+        } 
 
         return this;
     },
