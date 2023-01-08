@@ -24,7 +24,7 @@ const calculator = {
     appendDigit: function(num) {
         
             //Logic to append numbers as they're typed
-            if(this.displayValue === '0') {
+            if(this.displayValue === '0' || this.displayValue === 0) {
                 this.displayValue = num;
             } else {
                 this.displayValue = this.displayValue + num;
