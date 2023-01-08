@@ -12,7 +12,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    operatorTwo: undefined,
+    calcExpression: '',
 
 
     updateScreen: function() {
@@ -89,6 +89,7 @@ const calculator = {
                 switch (this.operator) {
                     case "+":
                         this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
+                        this.calcExpression = this.result.toString();
                         this.displayValue = this.result.toString();
         
                             console.log(this.result);
@@ -96,12 +97,14 @@ const calculator = {
         
                     case "-":
                         this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
+                        this.calcExpression = this.result.toString();
                         this.displayValue = this.result.toString();
                             console.log(this.result);
                         break;
         
                     case "*":
                         this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
+                        this.calcExpression = this.result.toString();
                         this.displayValue = this.result.toString();
                             console.log(this.result);
                         break;
@@ -111,6 +114,7 @@ const calculator = {
                             this.displayValue = "ERR";
                         } else {
                             this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
+                            this.calcExpression = this.result.toString();
                             this.displayValue = this.result.toString();
                         }
         
@@ -133,13 +137,10 @@ const calculator = {
     secondCalculation: function(op) {
         this.operatorTwo = op; 
         
-        if ((this.firstOperand !== '' && this.nextOperand !== '' && this.operator !== undefined) 
-             && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
-                this.calculation();
-                this.operatorCheck = true;
-                this.displayValue = this.result.toString();
-                this.firstOperand = parseFloat(this.result);
+        if ((this.calcExpression !== '') && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
+                this.firstOperand = parseFloat(this.calcExpression);
                 this.nextOperand = parseFloat(this.displayValue);
+                this.calculation(this.firstOperand, this.nextOperand, this.operatorTwo);
             } 
 
             return this;
