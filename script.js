@@ -12,6 +12,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
+    operatorTwo: undefined,
 
 
     updateScreen: function() {
@@ -67,12 +68,6 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = parseFloat(this.displayValue);
             this.operatorCheck = true;
-        } else if ((this.firstOperand !== '' && this.nextOperand !== '') 
-                    && (this.operator === '+' || this.operator === '- ' || this.operator === '*' || this.operator === '/')) {
-            this.operatorCheck = true;
-            this.calculation().equals().updateScreen();
-            this.firstOperand = parseFloat(this.result);
-            this.nextOperand = parseFload(this.displayValue);
         } 
 
         return this;
@@ -135,6 +130,22 @@ const calculator = {
     },
 
 
+    secondCalculation: function(op) {
+        this.operatorTwo = op; 
+        
+        if ((this.firstOperand !== '' && this.nextOperand !== '' && this.operator !== undefined) 
+             && (this.operatorTwo === '+' || this.operatorTwo === '- ' || this.operatorTwo === '*' || this.operatorTwo === '/')) {
+                this.calculation();
+                this.operatorCheck = true;
+                this.displayValue = this.result.toString();
+                this.firstOperand = parseFloat(this.result);
+                this.nextOperand = parseFloat(this.displayValue);
+            } 
+
+            return this;
+    },
+
+
     resetScreen: function() {
         this.displayValue = '0';
         this.firstOperand = '';
@@ -160,7 +171,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).calculation(target.dataset.value).secondCalculation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
             calculator.equals(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
@@ -178,7 +189,7 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).calculation(e.key).updateScreen();
+            calculator.operation(e.key).calculation(e.key).secondCalculation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
             calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
