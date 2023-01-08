@@ -50,7 +50,7 @@ const calculator = {
 
 
     undo: function() {
-        if(this.displayValue === '0') {
+        if(this.displayValue === '0'|| this.displayValue === 0) {
             return;
         } else {
             this.displayValue = this.displayValue.toString().slice(0, -1);
