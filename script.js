@@ -10,7 +10,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    showResult: '',
+    calcCheck: false,
 
     updateScreen: function() {
         screen.textContent = this.displayValue.toString().slice(0, 16);
@@ -65,14 +65,9 @@ const calculator = {
             this.firstOperand = this.displayValue;
         } 
 
-        return this;
-    },
-
-    secondOperation: function(op) {
-        this.operator = op;
-
-        if (this.calculation === true) {
-            this.calculation();
+        if (this.calcCheck === true) {
+            this.displayValue = this.firstOperand.toString();
+            this.calculation(this.operator);
         }
 
         return this;
@@ -106,7 +101,9 @@ const calculator = {
             default: 
                 return;
             }
-
+        
+        this.calcCheck = true;
+            console.log(this.calcCheck);
         this.firstOperand = parseFloat(this.result);
         this.nextOperand = '';
         this.displayValue = this.firstOperand.toString();
@@ -120,7 +117,6 @@ const calculator = {
 
 
     equals: function(eql) {
-        this.showResult = eql
 
         this.calculation();
 
@@ -133,7 +129,7 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
-        this.showResult = '';
+        this.calcCheck = false;
 
         return this;
     },
@@ -154,7 +150,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).secondOperation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
             calculator.equals(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
@@ -172,7 +168,7 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).secondOperation(e.key).updateScreen();
+            calculator.operation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
             calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
