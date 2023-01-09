@@ -69,49 +69,38 @@ const calculator = {
     },
 
 
-    calculation: function(nextOp) {
-        if(nextOp == '+' || nextOp == '-' || nextOp == '*' || nextOp == '/' ) {
-            this.operator = nextOp
+    calculation: function() {
 
-                // console.log(this.firstOperand);
-                // console.log(this.operatorCheck);
-                // console.log(this.operator);
+        switch (this.operator) {
+            case "+":
+                this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
+                break;
 
-        } else {
-                // console.log(this.nextOperand);
-                // console.log(this.operator);
+            case "-":
+                this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
+                break;
 
-                switch (this.operator) {
-                    case "+":
-                        this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
-                        break;
-        
-                    case "-":
-                        this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
-                        break;
-        
-                    case "*":
-                        this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
-                        break;
-        
-                    case "/":
-                        if(this.nextOperand === '0') {
-                            this.displayValue = "ERR";
-                        } else {
-                            this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
-                        }
+            case "*":
+                this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
+                break;
 
-                        break;
+            case "/":
+                if(this.nextOperand === '0') {
+                    this.displayValue = "ERR";
+                } else {
+                    this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
+                }
 
-                    default: 
-                        return;
-                    }
+                break;
 
-            this.firstOperand = parseFloat(this.result);
-            this.nextOperand = '';
-            this.displayValue = this.firstOperand.toString();
+            default: 
+                return;
+            }
 
-        }
+        this.firstOperand = parseFloat(this.result);
+        this.nextOperand = '';
+        this.displayValue = this.firstOperand.toString();
+
 
         console.log(this.firstOperand);
         console.log(this.nextOperand);
@@ -121,16 +110,14 @@ const calculator = {
 
 
     handleResult: function(eql) {
-        // (this.showResult = eql) || (this.showResult = this.operator)
-        //     console.log(this.operator);
+        (this.showResult = eql) || (this.showResult = this.operator)
 
         if(this.showResult = eql) {
             this.calculation();
-        }
-        // } else if (this.showResult = this.operator) {
-        //     this.calculation(this.firstOperand, this.nextOperand, this.operator);
-        // }
-
+        } else if (this.showResult = this.operator) {
+             this.calculation();
+         }
+        
         return this; 
     },
 
@@ -140,6 +127,7 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
+        this.showResult = '';
 
         return this;
     },
@@ -160,7 +148,7 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).calculation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
             calculator.handleResult(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
@@ -178,7 +166,7 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).calculation(e.key).updateScreen();
+            calculator.operation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
             calculator.handleResult(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
