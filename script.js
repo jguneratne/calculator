@@ -13,8 +13,8 @@ const calculator = {
     showResult: '',
 
     updateScreen: function() {
-        screen.textContent = this.displayValue.toString();
-
+        screen.textContent = this.displayValue.toString().slice(0,16);
+        
         return this;
     },
 
