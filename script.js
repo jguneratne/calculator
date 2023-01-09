@@ -13,7 +13,7 @@ const calculator = {
     showResult: '',
 
     updateScreen: function() {
-        screen.textContent = this.displayValue.toString().slice(0,16);
+        screen.textContent = this.displayValue.toString().slice(0, 16);
         
         return this;
     },
@@ -68,6 +68,16 @@ const calculator = {
         return this;
     },
 
+    secondOperation: function(op) {
+        this.operator = op;
+
+        if (this.calculation === true) {
+            this.calculation();
+        }
+
+        return this;
+    },
+
 
     calculation: function() {
 
@@ -109,15 +119,11 @@ const calculator = {
     },
 
 
-    handleResult: function(eql) {
-        (this.showResult = eql) || (this.showResult = this.operator)
+    equals: function(eql) {
+        this.showResult = eql
 
-        if(this.showResult = eql) {
-            this.calculation();
-        } else if (this.showResult = this.operator) {
-             this.calculation();
-         }
-        
+        this.calculation();
+
         return this; 
     },
 
@@ -148,9 +154,9 @@ buttons.forEach(button => {
         } else if (e.target.matches('.btn-dec')) {
             calculator.addDecimal(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-op')) {
-            calculator.operation(target.dataset.value).updateScreen();
+            calculator.operation(target.dataset.value).secondOperation(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-eql')) {
-            calculator.handleResult(target.dataset.value).updateScreen();
+            calculator.equals(target.dataset.value).updateScreen();
         } else if (e.target.matches('.btn-clear')) {
             calculator.resetScreen().updateScreen();
         } else if (e.target.matches('.btn-undo')) {
@@ -166,9 +172,9 @@ document.addEventListener('keydown', function(e) {
         } else if (e.key === '.') {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
-            calculator.operation(e.key).updateScreen();
+            calculator.operation(e.key).secondOperation(e.key).updateScreen();
         } else if ((e.key === 'Enter')) {
-            calculator.handleResult(e.key).updateScreen();
+            calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
         } else if ((e.key === 'd')) {
