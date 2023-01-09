@@ -85,8 +85,9 @@ const calculator = {
                 break;
 
             case "/":
-                if(this.nextOperand === '0') {
-                    this.displayValue = "ERR";
+                if(this.nextOperand === '0' || this.nextOperand === 0) {
+                    this.result = "ERR";
+                    this.displayValue = this.result;
                 } else {
                     this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
                 }
@@ -97,9 +98,9 @@ const calculator = {
                 return;
             }
  
+        this.displayValue = this.result.toString();
         this.firstOperand = parseFloat(this.result);
         this.nextOperand = '';
-        this.displayValue = this.firstOperand.toString();
 
 
         console.log(this.firstOperand);
