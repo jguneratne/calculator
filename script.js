@@ -165,7 +165,7 @@ document.addEventListener('keydown', function(e) {
             calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
-        } else if ((e.key === 'd')) {
+        } else if ((e.key === 'c')) {
             calculator.resetScreen().updateScreen();
         } else {
             return;
