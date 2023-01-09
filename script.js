@@ -10,6 +10,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
+    calcCheck: false,
     
 
     updateScreen: function() {
@@ -63,7 +64,10 @@ const calculator = {
 
         if(this.operator !== undefined) {
             this.firstOperand = this.displayValue;
-        } 
+            this.calcCheck = true;
+        } else if (this.calcCheck = true) {
+            this.equals(this.operator);
+        }
 
         return this;
     },
