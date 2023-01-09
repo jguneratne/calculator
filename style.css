@@ -33,7 +33,7 @@ body {
     background-color: black;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    box-shadow: inset 0 -8px 8px -6px rgb(174, 173, 173), inset -8px 0 15px -6px rgb(174, 173, 173);
+    box-shadow: inset 0 -8px 8px -6px rgba(174, 173, 173, .7), inset -8px 0 15px -6px rgba(174, 173, 173, .7);
     height: 134px;
     width: 100%;
     margin: 0px;
@@ -57,7 +57,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(207, 211, 211);
+    background-color: rgb(191, 192, 192);
     box-shadow: inset -8px 0 15px -6px rgb(110, 114, 114),  inset 0 -8px 15px -6px rgb(110, 114, 114);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -104,10 +104,23 @@ body {
     align-items: center;
     border-radius: 5px;
     background-color: rgb(135, 206, 250);
+    border: 1px outset rgba(41, 180, 214, 0.5);
     box-shadow: 0 8px 8px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
     font-family: 'Major Mono Display', monospace;
     font-size: 24px;
     cursor: pointer;
+}
+
+.btn-op {
+    background-color: rgb(135, 166, 250);
+    border: 1px outset rgba(118, 139, 199, 0.5);
+    box-shadow: 0 8px 8px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
+}
+
+.btn-eql {
+    background-color: rgb(250, 208, 135);
+    border: 1px outset rgba(199, 166, 108, 0.5);
+    box-shadow: 0 8px 8px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
 }
 
 .btn-undo,
@@ -125,9 +138,15 @@ body {
     cursor: pointer;
 }
 
+.btn-clear {
+    background-color: rgb(154, 197, 154);
+    border: 1px outset rgba(143, 159, 143, .5);
+}
+
 .btn-undo {
     margin-top: 6px;
     font-size: 36px;
+    background-color: rgb(202, 136, 124);
 }
 
 .footer {
