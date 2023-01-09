@@ -10,7 +10,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    calcCheck: false,
+    
 
     updateScreen: function() {
         screen.textContent = this.displayValue.toString().slice(0, 16);
@@ -65,11 +65,6 @@ const calculator = {
             this.firstOperand = this.displayValue;
         } 
 
-        if (this.calcCheck === true) {
-            this.displayValue = this.firstOperand.toString();
-            this.calculation(this.operator);
-        }
-
         return this;
     },
 
@@ -101,9 +96,7 @@ const calculator = {
             default: 
                 return;
             }
-        
-        this.calcCheck = true;
-            console.log(this.calcCheck);
+ 
         this.firstOperand = parseFloat(this.result);
         this.nextOperand = '';
         this.displayValue = this.firstOperand.toString();
@@ -129,7 +122,6 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
-        this.calcCheck = false;
 
         return this;
     },
