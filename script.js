@@ -84,29 +84,14 @@ const calculator = {
                 switch (this.operator) {
                     case "+":
                         this.result = parseFloat(this.firstOperand) + parseFloat(this.nextOperand);
-                        this.firstOperand = parseFloat(this.result);
-                            console.log(this.firstOperand);
-                        this.nextOperand = '';
-                            console.log(this.nextOperand);
-                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "-":
                         this.result = parseFloat(this.firstOperand) - parseFloat(this.nextOperand);
-                        this.firstOperand = parseFloat(this.result);
-                            console.log(this.firstOperand);
-                        this.nextOperand = '';
-                            console.log(this.nextOperand);
-                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "*":
                         this.result = parseFloat(this.firstOperand) * parseFloat(this.nextOperand);
-                        this.firstOperand = parseFloat(this.result);
-                            console.log(this.firstOperand);
-                        this.nextOperand = '';
-                            console.log(this.nextOperand);
-                        this.displayValue = this.firstOperand.toString();
                         break;
         
                     case "/":
@@ -114,17 +99,22 @@ const calculator = {
                             this.displayValue = "ERR";
                         } else {
                             this.result = parseFloat(this.firstOperand) / parseFloat(this.nextOperand);
-                            this.firstOperand = parseFloat(this.result);
-                                console.log(this.firstOperand);
-                            this.nextOperand = '';
-                                console.log(this.nextOperand);
-                            this.displayValue = this.firstOperand.toString();
                         }
 
                         break;
+
+                    default: 
+                        return;
                     }
 
+            this.firstOperand = parseFloat(this.result);
+            this.nextOperand = '';
+            this.displayValue = this.firstOperand.toString();
+
         }
+
+        console.log(this.firstOperand);
+        console.log(this.nextOperand);
         
         return this;
     },
@@ -150,6 +140,7 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
+
         return this;
     },
 };
