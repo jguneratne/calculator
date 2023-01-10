@@ -10,7 +10,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    calcCheck: false,
+    operatorCheck: false,
     
 
     updateScreen: function() {
@@ -22,7 +22,7 @@ const calculator = {
 
     appendDigit: function(num) {
         
-            //Logic to append numbers as they're typed
+            // Logic to append numbers as they're typed
             if(this.displayValue === '0' || this.displayValue === 0) {
                 this.displayValue = num;
             } else {
@@ -30,8 +30,9 @@ const calculator = {
             };
 
             // Logic to handle nextOperand
-            if(this.firstOperand !== '' && this.operator !== undefined) {
+            if(this.firstOperand !== '' && this.operatorCheck === true) {
                 this.displayValue = num; 
+                this.operatorCheck = false;
                 this.nextOperand = this.displayValue;
             } 
         
@@ -64,7 +65,7 @@ const calculator = {
 
         if(this.operator !== undefined) {
             this.firstOperand = this.displayValue;
-            this.calcCheck = true;
+            this.operatorCheck = true;
         } else if (this.calcCheck = true) {
             this.equals(this.operator);
         }
@@ -127,6 +128,7 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
+        this.operatorCheck = false;
 
         return this;
     },
