@@ -66,7 +66,7 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = this.displayValue;
             this.operatorCheck = true;
-        } else if (this.calcCheck = true) {
+        } else if (this.operatorCheck = true) {
             this.equals(this.operator);
         }
 
@@ -168,7 +168,7 @@ document.addEventListener('keydown', function(e) {
             calculator.addDecimal(e.key).updateScreen();
         } else if ((e.key === '+') || (e.key === '-') || (e.key === '*') || (e.key === '/')) {
             calculator.operation(e.key).updateScreen();
-        } else if ((e.key === 'Enter')) {
+        } else if ((e.key === 'Enter') || (e.key === '=')) {
             calculator.equals(e.key).updateScreen();
         } else if ((e.key === 'Backspace')) {
             calculator.undo().updateScreen();
