@@ -31,9 +31,9 @@ const calculator = {
 
             // Logic to handle nextOperand
             if(this.firstOperand !== '' && this.operator !== undefined) {
-                this.displayValue = num;
+                this.displayValue = num; 
                 this.nextOperand = this.displayValue;
-            }
+            } 
         
         return this;
     },
@@ -41,7 +41,7 @@ const calculator = {
 
     addDecimal: function(point) {
         if(!this.displayValue.includes(point)) {
-            this.displayValue.toString() += point;
+            this.displayValue += point;
         }
         return this;
     },
