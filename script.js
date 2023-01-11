@@ -41,7 +41,10 @@ const calculator = {
 
 
     addDecimal: function(point) {
-        if(!this.displayValue.includes(point)) {
+        if (this.displayValue === this.firstOperand || this.displayValue === this.nextOperand) {
+            this.displayValue = '0';
+            this.displayValue += point;
+        } else if(!this.displayValue.includes(point)) {
             this.displayValue += point;
         }
         return this;
@@ -66,7 +69,7 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = this.displayValue;
             this.operatorCheck = true;
-        } else if (this.operatorCheck = true) {
+        } else if (this.operator !== undefined) {
             this.equals(this.operator);
         }
 
