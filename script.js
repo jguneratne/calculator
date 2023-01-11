@@ -10,11 +10,19 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    operatorCheck: false,
     
 
     updateScreen: function() {
+        
+        if(this.firstOperand !== '') {
+            this.displayValue = this.firstOperand;
+                console.log(this.displayValue);
+        } else if (this.operator !== undefined) {
+            this.displayValue = this.nextOperand;
+        }
+        
         screen.textContent = this.displayValue.toString().slice(0, 16);
+        
         
         return this;
     },
@@ -24,17 +32,17 @@ const calculator = {
         
             // Logic to append numbers as they're typed
             if(this.displayValue === '0' || this.displayValue === 0) {
-                this.displayValue = num;
+                this.firstOperand = num;
             } else {
-                this.displayValue = this.displayValue + num;
+                this.firstOperand = this.firstOperand + num;
             };
 
             // Logic to handle nextOperand
-            if(this.firstOperand !== '' && this.operatorCheck === true) {
-                this.displayValue = num; 
-                this.operatorCheck = false;
-                this.nextOperand = this.displayValue;
-            } 
+            if(this.firstOperand !== '' && this.operator !== undefined) {
+                this.nextOperand = num;
+            } else {
+                this.nextOperand = this.nextOperand + num;
+            };
         
         return this;
     },
@@ -64,14 +72,13 @@ const calculator = {
 
     operation: function(op) {
 
-        this.operator = op;
-
-        if(this.operator !== undefined) {
-            this.firstOperand = this.displayValue;
-            this.operatorCheck = true;
-        } else if (this.operator !== undefined && this.operatorCheck) {
-            this.equals(this.operator);
-        }
+        if(this.firstOperand !== '') {
+            this.operator = op;
+                console.log(this.operator);
+            this.nextOperand = this.firstOperand;
+         } //else if (this.operator !== undefined && this.operator) {
+        //     this.equals(this.operator);
+        // }
 
         return this;
     },
@@ -111,8 +118,8 @@ const calculator = {
         this.nextOperand = '';
 
 
-        console.log(this.firstOperand);
-        console.log(this.nextOperand);
+        // console.log(this.firstOperand);
+        // console.log(this.nextOperand);
         
         return this;
     },
@@ -120,7 +127,7 @@ const calculator = {
 
     equals: function(eql) {
 
-        if (this.firstOperand !== '' && this.nextOperand !== '') {
+        if (this.firstOperand !== '' && this.nextOperand !== undefined) {
             this.calculation();
         }
 
@@ -133,7 +140,6 @@ const calculator = {
         this.firstOperand = '';
         this.nextOperand = '';
         this.operator = undefined;
-        this.operatorCheck = false;
 
         return this;
     },
