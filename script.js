@@ -69,7 +69,7 @@ const calculator = {
         if(this.operator !== undefined) {
             this.firstOperand = this.displayValue;
             this.operatorCheck = true;
-        } else if (this.operator !== undefined) {
+        } else if (this.operator !== undefined && this.operatorCheck) {
             this.equals(this.operator);
         }
 
@@ -120,7 +120,9 @@ const calculator = {
 
     equals: function(eql) {
 
-        this.calculation();
+        if (this.firstOperand !== '' && this.nextOperand !== '') {
+            this.calculation();
+        }
 
         return this; 
     },
