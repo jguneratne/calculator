@@ -14,12 +14,6 @@ const calculator = {
 
     updateScreen: function() {
         
-        if(this.firstOperand !== '') {
-            this.displayValue = this.firstOperand;
-        } else if (this.operator !== undefined) {
-            this.displayValue = this.nextOperand;
-        }
-        
         screen.textContent = this.displayValue.toString().slice(0, 16);
         
         
@@ -29,12 +23,18 @@ const calculator = {
 
     appendDigit: function(num) {
         
-        if(this.operator === undefined) {
-            this.firstOperand = this.firstOperand + num;
-        };
+        if(!this.operator) {
+            this.firstOperand += num;
+            this.displayValue = this.firstOperand;
+        } else {
 
-        if(this.operator !== undefined) {
-            this.nextOperand = this.nextOperand + num;
+        };
+        
+        if(this.operator) {
+            this.nextOperand += num;
+            this.displayValue = this.nextOperand;
+        } else {
+            
         };
 
             console.log(this.firstOperand);
@@ -70,9 +70,6 @@ const calculator = {
 
         if(this.firstOperand !== '') {
             this.operator = op;
-            // this.nextOperand = this.firstOperand;
-            // this.firstOperand = '';
-                console.log(this.operator);
          } else if (this.operator !== undefined) {
             this.equals(this.operator);
          }
@@ -110,13 +107,9 @@ const calculator = {
                 return;
             }
  
-        //this.displayValue = this.result.toString();
+        this.displayValue = this.result.toString();
         this.firstOperand = parseFloat(this.result);  
         this.nextOperand = '';
-
-
-        // console.log(this.firstOperand);
-        // console.log(this.nextOperand);
         
         return this;
     },
@@ -168,6 +161,7 @@ buttons.forEach(button => {
 
     });
 });
+
 
 document.addEventListener('keydown', function(e) {
         if((e.key === '1') || (e.key === '2') || (e.key === '3') || (e.key === '4') || (e.key === '5') || (e.key === '6') || (e.key === '7') || (e.key === '8') || (e.key === '9') || (e.key === '0')) {
