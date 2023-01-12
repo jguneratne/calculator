@@ -16,7 +16,6 @@ const calculator = {
         
         if(this.firstOperand !== '') {
             this.displayValue = this.firstOperand;
-                console.log(this.displayValue);
         } else if (this.operator !== undefined) {
             this.displayValue = this.nextOperand;
         }
@@ -30,19 +29,14 @@ const calculator = {
 
     appendDigit: function(num) {
         
-            // Logic to append numbers as they're typed
             if(this.displayValue === '0' || this.displayValue === 0) {
                 this.firstOperand = num;
             } else {
                 this.firstOperand = this.firstOperand + num;
             };
 
-            // Logic to handle nextOperand
-            if(this.firstOperand !== '' && this.operator !== undefined) {
-                this.nextOperand = num;
-            } else {
-                this.nextOperand = this.nextOperand + num;
-            };
+            console.log(this.firstOperand);
+
         
         return this;
     },
@@ -74,11 +68,11 @@ const calculator = {
 
         if(this.firstOperand !== '') {
             this.operator = op;
-                console.log(this.operator);
             this.nextOperand = this.firstOperand;
-         } //else if (this.operator !== undefined && this.operator) {
-        //     this.equals(this.operator);
-        // }
+            this.firstOperand = '';
+         } else if (this.operator !== undefined) {
+            this.equals(this.operator);
+         }
 
         return this;
     },
@@ -113,8 +107,8 @@ const calculator = {
                 return;
             }
  
-        this.displayValue = this.result.toString();
-        this.firstOperand = parseFloat(this.result);
+        //this.displayValue = this.result.toString();
+        this.firstOperand = parseFloat(this.result);  
         this.nextOperand = '';
 
 
