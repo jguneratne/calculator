@@ -29,11 +29,13 @@ const calculator = {
 
     appendDigit: function(num) {
         
-            if(this.displayValue === '0' || this.displayValue === 0) {
-                this.firstOperand = num;
-            } else {
-                this.firstOperand = this.firstOperand + num;
-            };
+        if(this.operator === undefined) {
+            this.firstOperand = this.firstOperand + num;
+        };
+
+        if(this.operator !== undefined) {
+            this.nextOperand = this.nextOperand + num;
+        };
 
             console.log(this.firstOperand);
 
@@ -68,8 +70,9 @@ const calculator = {
 
         if(this.firstOperand !== '') {
             this.operator = op;
-            this.nextOperand = this.firstOperand;
-            this.firstOperand = '';
+            // this.nextOperand = this.firstOperand;
+            // this.firstOperand = '';
+                console.log(this.operator);
          } else if (this.operator !== undefined) {
             this.equals(this.operator);
          }
