@@ -10,7 +10,7 @@ const calculator = {
     nextOperand: '',
     result: '',
     operator: undefined,
-    
+
 
     updateScreen: function() {
         
@@ -58,13 +58,16 @@ const calculator = {
 
 
     operation: function(op) {
-
-        this.operator = op;
       
-        if (this.nextOperand) {
-            this.operand = this.equals(this.operator);
-         }
-
+        if (!this.operator) {
+            this.operator = op;
+        } else if (!this.nextOperand) {
+                this.operator = op;
+        } else if (this.firstOperand && this.operator && this.nextOperand) {
+            this.equals();
+            this.operator = op;
+         } 
+         
         return this;
     },
 
