@@ -36,21 +36,23 @@ const calculator = {
 
 
     addDecimal: function(point) {
-        if (this.displayValue === this.firstOperand || this.displayValue === this.nextOperand) {
-            this.displayValue = '0';
-            this.displayValue += point;
-        } else if(!this.displayValue.includes(point)) {
-            this.displayValue += point;
-        }
+     if(!this.firstOperand.includes(point)) {
+            this.firstOperand += point;
+        } else if(!this.nextOperand.includes(point)) {
+            this.nextOperand += point;
+        } 
+
         return this;
     },
 
 
     undo: function() {
-        if(this.displayValue === '0'|| this.displayValue === 0) {
-            return;
-        } else {
-            this.displayValue = this.displayValue.toString().slice(0, -1);
+        if (this.firstOperand) {
+            this.firstOperand = this.firstOperand.toString().slice(0, -1);
+            this.displayValue = this.firstOperand;
+        } else if (this.nextOperand) {
+            this.nextOperand = this.nextOperand.toString().slice(0, -1);
+            this.displayValue = this.firstOperand;
         }
 
         return this;
