@@ -16,28 +16,19 @@ const calculator = {
         
         screen.textContent = this.displayValue.toString().slice(0, 16);
         
-        
         return this;
     },
 
 
     appendDigit: function(num) {
         
-        if(!this.operator) {
-            this.firstOperand += num;
-            this.displayValue = this.firstOperand;
-        } else {
-
-        };
-        
         if(this.operator) {
             this.nextOperand += num;
             this.displayValue = this.nextOperand;
         } else {
-            
+            this.firstOperand += num;
+            this.displayValue = this.firstOperand;
         };
-
-            console.log(this.firstOperand);
 
         
         return this;
@@ -68,10 +59,10 @@ const calculator = {
 
     operation: function(op) {
 
-        if(this.firstOperand !== '') {
-            this.operator = op;
-         } else if (this.operator !== undefined) {
-            this.equals(this.operator);
+        this.operator = op;
+      
+        if (this.nextOperand) {
+            this.operand = this.equals(this.operator);
          }
 
         return this;
@@ -117,7 +108,7 @@ const calculator = {
 
     equals: function(eql) {
 
-        if (this.firstOperand !== '' && this.nextOperand !== undefined) {
+        if (this.firstOperand && this.nextOperand) {
             this.calculation();
         }
 
