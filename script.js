@@ -29,14 +29,16 @@ const calculator = {
             this.firstOperand += num;
             this.displayValue = this.firstOperand;
         };
-
         
         return this;
     },
 
 
     addDecimal: function(point) {
-     if(!this.firstOperand.includes(point)) {
+     this.firstOperand = this.firstOperand.toString();
+     this.nextOperand = this.nextOperand.toString();
+     
+        if(!this.firstOperand.includes(point)) {
             this.firstOperand += point;
         } else if(!this.nextOperand.includes(point)) {
             this.nextOperand += point;
