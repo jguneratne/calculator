@@ -7,9 +7,9 @@ const screen = document.querySelector('.screen');
 const calculator = {
     displayValue: '0',
     firstOperand: '',
+    operator: undefined,
     nextOperand: '',
     result: '',
-    operator: undefined,
 
 
     updateScreen: function() {
@@ -126,8 +126,9 @@ const calculator = {
     resetScreen: function() {
         this.displayValue = '0';
         this.firstOperand = '';
-        this.nextOperand = '';
         this.operator = undefined;
+        this.nextOperand = '';
+        this.result = '';
 
         return this;
     },
