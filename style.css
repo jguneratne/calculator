@@ -112,16 +112,17 @@ body {
 }
 
 .btn-num:active {
-    background-color: rgb(100, 138, 159);
+    background-color: #648a9f;
 }
 
 .btn-op {
     background-color: rgb(135, 166, 250);
-    border: 1px outset rgba(118, 139, 199, 0.5);
+    border: 1px outset rgba(118, 139, 199, 0.502);
     box-shadow: 0 8px 8px -10px rgb(74, 87, 96), 8px 0 10px -10px rgb(74, 87, 96), inset -8px 0 10px -6px rgb(74, 87, 96), inset 0 -8px 10px -6px rgb(74, 87, 96);
 }
 
-.btn-op:active {
+.btn-op:active,
+.btn-dec:active {
     background-color: rgb(95, 112, 158);
 }
 
